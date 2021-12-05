@@ -22,12 +22,11 @@ saida();// Ja comeca com uma combinacao previa
 document.getElementById("botao").addEventListener("click", saida); //Evento de clique do botao
 
 function saida(){    
-    
+  
     document.getElementById("tonalidade").innerHTML = selectTonalidade(TonalidadesCombinadas);
     document.getElementById("dinamica").innerHTML = selectElemento(DINAMICA);
     document.getElementById("velocidade").innerHTML = selectElemento(VELOCIDADE);
 
-    console.log(TonalidadesSelecionadas); //Verificar no console a tonalidade selecionada em cada chamada
 }
 
 
@@ -42,7 +41,7 @@ function CombinarTonalidade(){
             var escala = selectElemento(ESCALA);
             var acidente = selectElemento(ACIDENTE);
             var modo = selectElemento(MODO);
-            var combinacao = escala+acidente+modo;
+            var combinacao = escala+acidente+" "+modo;
     
             if(!TonalidadesCombinadas.includes(combinacao)){ // Validacao de duplicatas na lista. Futuramente utilizar hash table
                 TonalidadesCombinadas.push(combinacao);
