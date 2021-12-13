@@ -16,7 +16,6 @@ CombinarTonalidade();
 TonalidadesSelecionadas = []; // Lista para verificar se uma tonalidade repetiu
 
 
-
                         /********** PRINCIPAL **********/
 saida();// Ja comeca com uma combinacao previa
 document.getElementById("botao").addEventListener("click", saida); //Evento de clique do botao
@@ -28,7 +27,6 @@ function saida(){
     document.getElementById("velocidade").innerHTML = selectElemento(VELOCIDADE);
 
 }
-
 
                         /********** TONALIDADE **********/
 // Retorna uma lista de 42 combinacoes diferentes
@@ -61,7 +59,6 @@ function selectTonalidade(lista){
         TonalidadesSelecionadas = lista[n];
         return lista[n];
 }
-
 
                         /********** ELEMENTOS GERNERICOS **********/
 //Gerar elemento aleatorio
