@@ -1,10 +1,21 @@
-const ESCALA = ["C","D","E","F","G","A","B"];
 
-const ACIDENTE = ["","#","b"];
+const TONALIDADE = [
+    "C", "C 8° acima",
+    "Db", "Db 8° acima", "D", "D 8° acima",
+    "Eb", "E",
+    "F",
+    "Gb", "G",
+    "Ab", "A",
+    "Bb", "B", "B 8° abaixo",
 
-const MODO = ["maior","menor"];
-
-const ALTURA = ["8ª acima", "8ª abaixo"];
+    "Cm", "Cm 8° acima", "C#m", "C#m 8° acima",
+    "Dm", "Dm 8° acima",
+    "Ebm", "E", "Em",
+    "Fm", "F#m",
+    "Gm", "G#m",
+    "Am",
+    "Bbm","Bm", "Bm 8° abaixo"
+];
 
 const DINAMICA = ["pp", "p", "mf", "f", "ff"];
 
@@ -12,64 +23,42 @@ const VELOCIDADE = ["muito lento", "lento", "normal", "rápido", "muito rápido"
 
                         /********** ELEMENTOS GERNERICOS **********/
 //Gerar elemento aleatorio
+/*
 function selectElemento(lista){
     var n = Math.floor(Math.random()*lista.length);
     return lista[n];
 }
+*/
 
-                        /********** COMBINACAO DE ESCALA, ACIDENTE E MODO **********/
-TonalidadesCombinadas = []; // Lista com 42 combinacoes diferentes
-CombinarTonalidade(); 
+                        /********** SELECIONAR ELEMENTO **********/
+// Lista para guardar os elementos que ja foram mostrados. Assim da para garantir que um elemento nao seja mostrado duas vezes.
+// Tem que colocar as listas antes da funcao porque serao verificadas pelas funcao.
+TonalidadesGeradas = []; 
+DinamicasGeradas = [];
+VelocidadesGeradas = [];
 
-function CombinarTonalidade(){ // Retorna uma lista com 42 combinacoes diferentes
-    
-    for(var x = 0; x < 42; x++){ // Vai rodar ate obter 42 combinacoes diferentes
-        repete = true;
-    
-        do{
-            var escala = selectElemento(ESCALA);
-            var acidente = selectElemento(ACIDENTE);
-            var modo = selectElemento(MODO);
-            var combinacao = escala+acidente+" "+modo; // Formacao da tonalidade
-    
-            if(!TonalidadesCombinadas.includes(combinacao)){ // Validacao de duplicatas na lista. Futuramente utilizar hash table
-                TonalidadesCombinadas.push(combinacao);
-                repete = false;
-            }
-
-        }while(repete == true);
-
-    }
-
-    return TonalidadesCombinadas;
-}
-
-                        /********** SELECAO DA TONALIDADE FINAL **********/
-TonalidadesSelecionadas = []; // Lista para garantir que uma tonalidade gerada nao seja repetida
-
-function selectTonalidade(lista){ // Escolhe de forma aleatoria uma tonalidade dentro da lista passada 
+function selectElemento(lista, listaFinal){ // Escolhe de forma aleatoria UMA tonalidade dentro da lista passada. 
 
     do{
+        
         var inseriu = false;
 
-        var n = Math.floor(Math.random()*lista.length); // O tamanho da lista é 42, porem os indices vao de 0 - 41
-        
-            //Teste para verificar a saida em console
-        // console.log(n+": "+lista[n]);
+        var n = Math.floor(Math.random()*lista.length); 
 
-        if(!TonalidadesSelecionadas.includes(lista[n])){
-            TonalidadesSelecionadas.push(lista[n]);
+        if(!listaFinal.includes(lista[n])){
+            listaFinal.push(lista[n]);
             inseriu = true;
         }
         
-                    //Teste de repeticao
-        // if(inseriu == false)
+                    //VALIDACAO DE REPETICAO
+        //if(inseriu == false)
         //    console.log(lista[n]+":"+"repetiu. Inserir = "+inseriu);
     
-        if(TonalidadesSelecionadas.length == 42){ 
-            // Como ele vai retornar 42 repeticoes diferentes, se passar disso, o while vai entrar em loop infinito.
+        if(listaFinal.length == lista.length){ 
+            // Como ele vai retornar um numero x de repeticoes diferentes, 
+            // se passar disso, o while vai entrar em loop infinito.
             // Assim tem que zerar a lista pra comecar tudo do zero
-            TonalidadesSelecionadas = [];
+            listaFinal = [];
         }
     }while(inseriu == false);
     return lista[n];
@@ -77,14 +66,20 @@ function selectTonalidade(lista){ // Escolhe de forma aleatoria uma tonalidade d
 
                         /********** PRINCIPAL **********/
 function saida(){    
-    
-    document.getElementById("tonalidade").innerHTML = selectTonalidade(TonalidadesCombinadas);
-    document.getElementById("dinamica").innerHTML = selectElemento(DINAMICA);
-    document.getElementById("velocidade").innerHTML = selectElemento(VELOCIDADE);
-    
-    // Teste para verificar as tonalidades ja impressas
-    // console.log(TonalidadesSelecionadas);
+
+    var tonalidadeMaior = document.createElement("div");
+    tonalidadeMaior.innerText = selectElemento(TONALIDADE, TonalidadesGeradas);
+    document.getElementsByClassName("tonalidade")[0].appendChild(tonalidadeMaior);
+   
+    var dinamica = document.createElement("div");
+    dinamica.innerText = selectElemento(DINAMICA, DinamicasGeradas);
+    document.getElementsByClassName("dinamica")[0].appendChild(dinamica);
+
+    var velocidade = document.createElement("div");
+    velocidade.innerText = selectElemento(VELOCIDADE, VelocidadesGeradas);
+    document.getElementsByClassName("velocidade")[0].appendChild(velocidade);
+        
 }
 
-saida();// Ja comeca com uma combinacao previa entre Tonalidade, Dinamica e Velocidade
+saida();// Ja comeca com uma combinacao previa
 document.getElementById("botao").addEventListener("click", saida); //Evento de clique do botao

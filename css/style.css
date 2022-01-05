@@ -9,10 +9,6 @@ body{
     background-color: blanchedalmond;
 }
 
-ul, li{
-    list-style-type: none;
-}
-
 .container{
     display: flex;
     flex-direction: column;
@@ -38,25 +34,28 @@ ul, li{
 
 .content-int{
     display: flex;
+    flex-direction: row;
+    font-size: 100%;
+    overflow: auto;
+
+    min-width: 430px;
+    max-width: 600px;
+}
+
+.item{
+    display: flex;
     flex-direction: column;
-    font-size: 20px;
 
-    width: 40%;
+    width: 100%;
 }
 
-.content-quadro{
-    border: 1px solid;
+.item div{
+    border: 1px solid black;
+    padding: 3px;
 }
 
-.quadro li{
-    padding: 5px;
-    text-align: center;
-
-    border: 1px solid;
-}
-
-.quadro li:first-child{
-    background-color: rgb(250, 215, 162);
+.content-int .item-title{
+    background-color: rgb(253, 216, 156);
 }
 
 /*BOTAO*/
@@ -71,16 +70,18 @@ ul, li{
     font-weight: bold;
     
     border-radius: 10px;
-    background-color: rgb(236, 174, 82);
+    background-color: rgb(241, 187, 106);
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 430px) {
     body {
         min-width: 200px;
-        max-width: 480px;
+        max-width: 430px;
     }
 
     .content-int{
-        width: 80%;
+        min-width: 90%;
+        font-size: 80%;
     }
+    
   }
