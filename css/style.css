@@ -4,6 +4,12 @@
     box-sizing: border-box;
 }
 
+ul, li{
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
 body{
     text-align: center;
     background-color: blanchedalmond;
@@ -34,7 +40,7 @@ body{
 
 .content-int{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     font-size: 100%;
     overflow: auto;
 
@@ -42,20 +48,48 @@ body{
     max-width: 600px;
 }
 
-.item{
+.tonalidade, .articulacao{
     display: flex;
     flex-direction: column;
-
-    width: 100%;
 }
 
-.item div{
-    border: 1px solid black;
-    padding: 3px;
-}
-
-.content-int .item-title{
+.title{
     background-color: rgb(253, 216, 156);
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+}
+
+.item-title{
+    padding: 5px;
+    width: 100%;
+    border: 1px solid black;
+}
+
+/*ELEMENTOS*/
+.elements{
+    display: flex;
+    flex-direction: row;    
+    background-color: white;
+}
+
+.elements ul li{
+    padding-left: 10px;
+    border-bottom: 1px solid black;
+}
+
+.tonalidade, .articulacao{
+    width: 100%;    
+    border: 1px solid black;
+}
+
+.tonalidade{
+    text-align: left;
+}
+
+.articulacao{
+    align-items: center;
 }
 
 /*BOTAO*/

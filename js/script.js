@@ -1,4 +1,3 @@
-
 const TONALIDADE = [
     "C", "C 8° acima",
     "Db", "Db 8° acima", "D", "D 8° acima",
@@ -21,14 +20,9 @@ const DINAMICA = ["pp", "p", "mf", "f", "ff"];
 
 const VELOCIDADE = ["muito lento", "lento", "normal", "rápido", "muito rápido"];
 
-                        /********** ELEMENTOS GERNERICOS **********/
-//Gerar elemento aleatorio
-/*
-function selectElemento(lista){
-    var n = Math.floor(Math.random()*lista.length);
-    return lista[n];
-}
-*/
+const ARTICULACAO = [];  
+for(i = 1; i <= 20; i++) 
+    ARTICULACAO.push(i);
 
                         /********** SELECIONAR ELEMENTO **********/
 // Lista para guardar os elementos que ja foram mostrados. Assim da para garantir que um elemento nao seja mostrado duas vezes.
@@ -36,6 +30,7 @@ function selectElemento(lista){
 TonalidadesGeradas = []; 
 DinamicasGeradas = [];
 VelocidadesGeradas = [];
+ArticulacaoGerada = ["01","02","03","04","05","06","07","08","9","10", "11"];
 
 function selectElemento(lista, listaFinal){ // Escolhe de forma aleatoria UMA tonalidade dentro da lista passada. 
 
@@ -67,17 +62,23 @@ function selectElemento(lista, listaFinal){ // Escolhe de forma aleatoria UMA to
                         /********** PRINCIPAL **********/
 function saida(){    
 
-    var tonalidadeMaior = document.createElement("div");
-    tonalidadeMaior.innerText = selectElemento(TONALIDADE, TonalidadesGeradas);
-    document.getElementsByClassName("tonalidade")[0].appendChild(tonalidadeMaior);
+    var tonalidadeMaior = document.createElement("li");
+    tonalidadeMaior.innerText = "T: " + selectElemento(TONALIDADE, TonalidadesGeradas);
+    document.getElementsByClassName("ton")[0].appendChild(tonalidadeMaior);
    
-    var dinamica = document.createElement("div");
-    dinamica.innerText = selectElemento(DINAMICA, DinamicasGeradas);
-    document.getElementsByClassName("dinamica")[0].appendChild(dinamica);
+    var dinamica = document.createElement("li");
+    dinamica.innerText = "D: " + selectElemento(DINAMICA, DinamicasGeradas);
+    document.getElementsByClassName("ton")[0].appendChild(dinamica);
 
-    var velocidade = document.createElement("div");
-    velocidade.innerText = selectElemento(VELOCIDADE, VelocidadesGeradas);
-    document.getElementsByClassName("velocidade")[0].appendChild(velocidade);
+    var velocidade = document.createElement("li");
+    velocidade.innerText = "V: " + selectElemento(VELOCIDADE, VelocidadesGeradas);
+    document.getElementsByClassName("ton")[0].appendChild(velocidade);
+
+    var articulacao = document.createElement("IMG");
+    articulacao.setAttribute("src", "img/articulacoes/"+selectElemento(ARTICULACAO, ArticulacaoGerada)+".png");
+    articulacao.setAttribute("width", "150px");
+    articulacao.setAttribute("height", "60px");
+    document.getElementsByClassName("articulacao")[0].appendChild(articulacao);
         
 }
 
