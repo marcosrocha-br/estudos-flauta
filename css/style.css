@@ -9,6 +9,10 @@ body{
     background-color: blanchedalmond;
 }
 
+ul, li{
+    list-style: none;
+}
+
 .container{
     display: flex;
     flex-direction: column;
@@ -35,27 +39,46 @@ body{
 .content-int{
     display: flex;
     flex-direction: row;
-    font-size: 100%;
-    overflow: auto;
-
+    font-size: 15pt;
+    width: 80%;
+    
     min-width: 430px;
     max-width: 600px;
+
+    background-color: white;
+}
+
+.content-title{
+    display: flex;
+    flex-direction: row;
+   
+}
+
+.item-title{
+    background-color: rgb(253, 216, 156);
+    width: 50%;
+
+    border: 1px solid black;
+}
+
+.tonalidade-int{
+    width: 100%;
+
+} 
+
+/*ELEMENTOS*/
+
+.itens{
+    display: flex;
+    flex-direction: row;
 }
 
 .item{
-    display: flex;
-    flex-direction: column;
-
-    width: 100%;
-}
-
-.item div{
     border: 1px solid black;
-    padding: 3px;
-}
+    width: 50%;
+    padding: 5px;
 
-.content-int .item-title{
-    background-color: rgb(253, 216, 156);
+    align-items: center;
 }
 
 /*BOTAO*/
@@ -81,7 +104,11 @@ body{
 
     .content-int{
         min-width: 90%;
-        font-size: 80%;
+        font-size: large;
+    }
+
+    .elemento{
+        font-size: 20pt;
     }
     
   }

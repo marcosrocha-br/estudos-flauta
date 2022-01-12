@@ -21,14 +21,9 @@ const DINAMICA = ["pp", "p", "mf", "f", "ff"];
 
 const VELOCIDADE = ["muito lento", "lento", "normal", "rápido", "muito rápido"];
 
-                        /********** ELEMENTOS GERNERICOS **********/
-//Gerar elemento aleatorio
-/*
-function selectElemento(lista){
-    var n = Math.floor(Math.random()*lista.length);
-    return lista[n];
-}
-*/
+const ARTICULACAO = [];
+for(x = 1; x <= 24; x++)
+    ARTICULACAO.push(x);
 
                         /********** SELECIONAR ELEMENTO **********/
 // Lista para guardar os elementos que ja foram mostrados. Assim da para garantir que um elemento nao seja mostrado duas vezes.
@@ -36,6 +31,7 @@ function selectElemento(lista){
 TonalidadesGeradas = []; 
 DinamicasGeradas = [];
 VelocidadesGeradas = [];
+ArticulacaoGerada = [];
 
 function selectElemento(lista, listaFinal){ // Escolhe de forma aleatoria UMA tonalidade dentro da lista passada. 
 
@@ -67,18 +63,20 @@ function selectElemento(lista, listaFinal){ // Escolhe de forma aleatoria UMA to
                         /********** PRINCIPAL **********/
 function saida(){    
 
-    var tonalidadeMaior = document.createElement("div");
-    tonalidadeMaior.innerText = selectElemento(TONALIDADE, TonalidadesGeradas);
-    document.getElementsByClassName("tonalidade")[0].appendChild(tonalidadeMaior);
-   
-    var dinamica = document.createElement("div");
-    dinamica.innerText = selectElemento(DINAMICA, DinamicasGeradas);
-    document.getElementsByClassName("dinamica")[0].appendChild(dinamica);
+    var tom = selectElemento(TONALIDADE, TonalidadesGeradas);
+    var dinamica = selectElemento(DINAMICA, DinamicasGeradas);
+    var velocidade = selectElemento(VELOCIDADE, VelocidadesGeradas);
+    var articulacao = selectElemento(ARTICULACAO, ArticulacaoGerada);
+    
+    var tonalidade = document.querySelector(".elementos");
+    tonalidade.insertAdjacentHTML("beforeend", 
+    `<div class="itens">
+        <div class="item">${tom}<br>${dinamica}<br>${velocidade}</div>
+        <div class="item">
+            <img src="img/figuras/${articulacao}.png" width="100%" >
+        </div>
+    </div>`);
 
-    var velocidade = document.createElement("div");
-    velocidade.innerText = selectElemento(VELOCIDADE, VelocidadesGeradas);
-    document.getElementsByClassName("velocidade")[0].appendChild(velocidade);
-        
 }
 
 saida();// Ja comeca com uma combinacao previa
