@@ -21,7 +21,7 @@ const DINAMICA = ["pp", "p", "mf", "f", "ff"];
 const VELOCIDADE = ["muito lento", "lento", "normal", "rápido", "muito rápido"];
 
 const ARTICULACAO = [];
-for(x = 1; x <= 24; x++)
+for(x = 1; x <= 23; x++)
     ARTICULACAO.push(x);
 
                         /********** VARIAVEIS AUXILIARES **********/
