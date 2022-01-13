@@ -1,4 +1,3 @@
-
 const TONALIDADE = [
     "C", "C 8° acima",
     "Db", "Db 8° acima", "D", "D 8° acima",
@@ -25,48 +24,70 @@ const ARTICULACAO = [];
 for(x = 1; x <= 24; x++)
     ARTICULACAO.push(x);
 
-                        /********** SELECIONAR ELEMENTO **********/
-// Lista para guardar os elementos que ja foram mostrados. Assim da para garantir que um elemento nao seja mostrado duas vezes.
-// Tem que colocar as listas antes da funcao porque serao verificadas pelas funcao.
-TonalidadesGeradas = []; 
-DinamicasGeradas = [];
-VelocidadesGeradas = [];
-ArticulacaoGerada = [];
+                        /********** VARIAVEIS AUXILIARES **********/
+// A ideia e selecionar um elemento da lista auxiliar de forma aleatoria e depois
+// remover esse elemento para nao ser mais selecionado. Quando o tamanho da lista for igual 
+// a zero, a lista auxiliar recebera o dados novamente.
 
-function selectElemento(lista, listaFinal){ // Escolhe de forma aleatoria UMA tonalidade dentro da lista passada. 
+var dinamicaAux = []; 
+var tonalidadeAux = [];
+var velocidadeAux = [];
+var articulacaoAux = [];
 
-    do{
-        
-        var inseriu = false;
+                        /********** COPIAR LISTA **********/
 
-        var n = Math.floor(Math.random()*lista.length); 
+// Funcao para copiar o elementos de uma lista em outra
+// Quando copiado utilizando atribuicao, sao atribuidas as referencias. 
+// Se alterar a copia, altera a original
+function copiar(origem, destino){
+    for(pos in origem){
+        destino.push(origem[pos]);
+    }
+}
 
-        if(!listaFinal.includes(lista[n])){
-            listaFinal.push(lista[n]);
-            inseriu = true;
+copiar(TONALIDADE, tonalidadeAux);
+copiar(DINAMICA, dinamicaAux);
+copiar(VELOCIDADE, velocidadeAux);
+copiar(ARTICULACAO, articulacaoAux);
+
+                        /********** SELECAO DE ELEMENTOS **********/
+function selectElemento(lista){
+
+    if(lista.length >= 0){
+
+        var n = Math.floor(Math.random() * lista.length); 
+
+        if(lista.length == 0){
+            switch(lista){
+                case tonalidadeAux:
+                    console.log("tonalidade");
+                    copiar(TONALIDADE, tonalidadeAux);
+                    break;
+                case dinamicaAux:
+                    console.log("dinamicas zeradas");
+                    copiar(DINAMICA, dinamicaAux);
+                    break;
+                case velocidadeAux:
+                    console.log("velocidade");
+                    copiar(VELOCIDADE, velocidadeAux);
+                    break;
+                case articulacaoAux:
+                    console.log("articulacao");
+                    copiar(ARTICULACAO, articulacaoAux);
+            }
         }
-        
-                    //VALIDACAO DE REPETICAO
-        //if(inseriu == false)
-        //    console.log(lista[n]+":"+"repetiu. Inserir = "+inseriu);
-    
-        if(listaFinal.length == lista.length){ 
-            // Como ele vai retornar um numero x de repeticoes diferentes, 
-            // se passar disso, o while vai entrar em loop infinito.
-            // Assim tem que zerar a lista pra comecar tudo do zero
-            listaFinal = [];
-        }
-    }while(inseriu == false);
-    return lista[n];
+
+        return lista.splice(n, 1);   
+    }
 }
 
                         /********** PRINCIPAL **********/
 function saida(){    
 
-    var tom = selectElemento(TONALIDADE, TonalidadesGeradas);
-    var dinamica = selectElemento(DINAMICA, DinamicasGeradas);
-    var velocidade = selectElemento(VELOCIDADE, VelocidadesGeradas);
-    var articulacao = selectElemento(ARTICULACAO, ArticulacaoGerada);
+    var tom = selectElemento(tonalidadeAux);
+    var dinamica = selectElemento(dinamicaAux);
+    var velocidade = selectElemento(velocidadeAux);
+    var articulacao = selectElemento(articulacaoAux);
     
     var tonalidade = document.querySelector(".elementos");
     tonalidade.insertAdjacentHTML("beforeend", 
