@@ -21,7 +21,7 @@ const DINAMICA = ["pp", "p", "mf", "f", "ff"];
 const VELOCIDADE = ["muito lento", "lento", "normal", "rápido", "muito rápido"];
 
 const ARTICULACAO = [];
-for(x = 1; x <= 23; x++)
+for(x = 1; x <= 37; x++)
     ARTICULACAO.push(x);
 
                         /********** VARIAVEIS AUXILIARES **********/
@@ -92,8 +92,8 @@ function saida(){
     var tonalidade = document.querySelector(".elementos");
     tonalidade.insertAdjacentHTML("beforeend", 
     `<div class="itens">
-        <div class="item">${tom}<br>${dinamica}<br>${velocidade}</div>
-        <div class="item">
+        <div class="item ton">${tom}<br>${dinamica}<br>${velocidade}</div>
+        <div class="item art">
             <img src="img/figuras/${articulacao}.png" width="100%" >
         </div>
     </div>`);
