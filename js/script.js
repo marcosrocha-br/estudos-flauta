@@ -39,16 +39,16 @@ var articulacaoAux = [];
 // Funcao para copiar o elementos de uma lista em outra
 // Quando copiado utilizando atribuicao, sao atribuidas as referencias. 
 // Se alterar a copia, altera a original
-function copiar(origem, destino){
+function copia(origem, destino){
     for(pos in origem){
         destino.push(origem[pos]);
     }
 }
 
-copiar(TONALIDADE, tonalidadeAux);
-copiar(DINAMICA, dinamicaAux);
-copiar(VELOCIDADE, velocidadeAux);
-copiar(ARTICULACAO, articulacaoAux);
+copia(TONALIDADE, tonalidadeAux);
+copia(DINAMICA, dinamicaAux);
+copia(VELOCIDADE, velocidadeAux);
+copia(ARTICULACAO, articulacaoAux);
 
                         /********** SELECAO DE ELEMENTOS **********/
 function selectElemento(lista){
@@ -61,19 +61,19 @@ function selectElemento(lista){
             switch(lista){
                 case tonalidadeAux:
                     console.log("tonalidade");
-                    copiar(TONALIDADE, tonalidadeAux);
+                    copia(TONALIDADE, tonalidadeAux);
                     break;
                 case dinamicaAux:
                     console.log("dinamicas zeradas");
-                    copiar(DINAMICA, dinamicaAux);
+                    copia(DINAMICA, dinamicaAux);
                     break;
                 case velocidadeAux:
                     console.log("velocidade");
-                    copiar(VELOCIDADE, velocidadeAux);
+                    copia(VELOCIDADE, velocidadeAux);
                     break;
                 case articulacaoAux:
                     console.log("articulacao");
-                    copiar(ARTICULACAO, articulacaoAux);
+                    copia(ARTICULACAO, articulacaoAux);
             }
         }
 
@@ -94,11 +94,16 @@ function saida(){
     `<div class="itens">
         <div class="item ton">${tom}<br>${dinamica}<br>${velocidade}</div>
         <div class="item art">
-            <img src="img/figuras/${articulacao}.png" width="100%" >
+            <img src="../img/articulacoes/${articulacao}.png" width="100%" >
         </div>
     </div>`);
+}
 
+// Funcao para atualizar a pagina e limpar as opcoes geradas
+function restart(){
+    window.location.reload();
 }
 
 saida();// Ja comeca com uma combinacao previa
-document.getElementById("botao").addEventListener("click", saida); //Evento de clique do botao
+document.getElementById("gerar").addEventListener("click", saida); //Evento para gerar o conteudo
+document.getElementById("restart").addEventListener("click", restart); //Evento para atualizar a pagina

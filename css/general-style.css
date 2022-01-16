@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;  
+    box-sizing: border-box;
+}
+
+body{
+    text-align: center;
+    background-color: rgb(255, 235, 205);
+}
+
+ul, li{
+    list-style: none;
+}
+
+/*BOTAO*/
+.botao{
+    margin-bottom: 50px;
+}
+button{
+    width: min-content;
+}
+
+.botao-int{
+    text-align: center;
+}
+
+.botao-item{
+    margin: 10px;
+    padding: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    
+    border-radius: 10px;
+    background-color: rgb(241, 187, 106);
+}
