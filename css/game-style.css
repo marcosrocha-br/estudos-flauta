@@ -1,90 +1,28 @@
-.container{
-    display: flex;
-    flex-direction: column;
+body{
+    font-family:'Times New Roman', Times, serif !important;
+    font-size: large !important;
 }
+
 /*TOPO DA PÁGINA*/
-.topo{
-    display: flex;
-    flex-direction: row;
-}
-
-.topo-int{
-    padding: 10px;
-}
-
 .home{
     padding: 3px;
 }
 
 .home:hover{
-    border: 1px solid black;
+    border: 1px solid rgb(113, 113, 113) !important;
+    border-radius: 10px;
     background-color: rgb(241, 187, 106);
     padding: 2px;
 }
 
 /*CABECALHO*/
 .titulo{
-    text-align: center;
-    padding: 30px;
-}
-
-.titulo-int{
-    text-align: center;
-    font-size: 20px;
-}
-
-/*CONTEUDO*/
-.content{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.content-int{
-    display: flex;
-    flex-direction: row;
-    font-size: 15pt;
-    width: 80%;
-    
-    min-width: 430px;
-    max-width: 600px;
-
-    background-color: white;
-}
-
-.content-title{
-    display: flex;
-    flex-direction: row;
-   
-}
-
-.item-title{
-    background-color: rgb(253, 216, 156);
-    width: 50%;
-
-    border: 1px solid black;
-}
-
-.tonalidade, .tonalidade-int{
-    width: 100%;
-
-} 
-
-/*ELEMENTOS*/
-.itens{
-    display: flex;
-    flex-direction: row;
+    background-color: rgb(253, 216, 156) !important;
+    border: 1px solid rgb(113, 113, 113) !important;
 }
 
 .item{
-    border: 1px solid black;
-    width: 50%;
-
-    align-items: center;
-}
-
-.ton{
-    padding: 25px;
+    border: 1px solid rgb(113, 113, 113) !important;
 }
 
 /*BOTAO*/
@@ -94,25 +32,18 @@
     align-items: center;
 }
 
-
 .botao .restart{
     background-color: black;
     color: white;
 }
 
+.item-dificuldade{
+    border-radius: 10px !important;
+    color: rgb(35, 35, 35) !important;
+    font-weight: bold !important;
+}
 
-
-
-
-@media screen and (max-width: 430px) {
-    .content-int{
-        min-width: 270px;
-        font-size: large;
-    }
-
-    .item{
-        padding: 2px;
-        font-size: 10pt;
-    }
-    
-  }
+.item-dificuldade:hover{
+    border: 1px solid rgb(113, 113, 113) !important;
+    border-radius: 10px !important;
+}

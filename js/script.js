@@ -60,19 +60,15 @@ function selectElemento(lista){
         if(lista.length == 0){
             switch(lista){
                 case tonalidadeAux:
-                    console.log("tonalidade");
                     copia(TONALIDADE, tonalidadeAux);
                     break;
                 case dinamicaAux:
-                    console.log("dinamicas zeradas");
                     copia(DINAMICA, dinamicaAux);
                     break;
                 case velocidadeAux:
-                    console.log("velocidade");
                     copia(VELOCIDADE, velocidadeAux);
                     break;
                 case articulacaoAux:
-                    console.log("articulacao");
                     copia(ARTICULACAO, articulacaoAux);
             }
         }
@@ -82,8 +78,10 @@ function selectElemento(lista){
 }
 
                         /********** PRINCIPAL **********/
+let cont = 0;
 function saida(){    
 
+    cont++;
     var tom = selectElemento(tonalidadeAux);
     var dinamica = selectElemento(dinamicaAux);
     var velocidade = selectElemento(velocidadeAux);
@@ -91,12 +89,28 @@ function saida(){
     
     var tonalidade = document.querySelector(".elementos");
     tonalidade.insertAdjacentHTML("beforeend", 
-    `<div class="itens">
-        <div class="item ton">${tom}<br>${dinamica}<br>${velocidade}</div>
-        <div class="item art">
-            <img src="../img/articulacoes/${articulacao}.png" width="100%" >
-        </div>
-    </div>`);
+    `
+    <tr class="item">
+        <td class="text-center align-content-center">${tom}<br>${dinamica}<br>${velocidade}</td>
+        <td class="align-content-center text-center">
+            <img src="../img/articulacoes/${articulacao}.png" width="80%" >
+        </td>
+        
+        <td class="align-content-center text-center">
+            <div class="btn-group" role="group">
+              <input type="radio" class="btn-check" name="${'dificuldade'+cont}" id="${'facil'+cont}" autocomplete="off">
+              <label class="btn btn-outline-success border-0 item-dificuldade" for="${'facil'+cont}">Fácil</label>
+          
+              <input type="radio" class="btn-check" name="${'dificuldade'+cont}" id="${'medio'+cont}" autocomplete="off">
+              <label class="btn btn-outline-warning border-0 item-dificuldade" for="${'medio'+cont}">Médio</label>
+          
+              <input type="radio" class="btn-check " name="${'dificuldade'+cont}" id="${'dificil'+cont}" autocomplete="off">
+              <label class="btn btn-outline-danger border-0 item-dificuldade" for="${'dificil'+cont}">Difícil</label>
+            </div>
+        </td>
+    </tr>
+
+    `);
 }
 
 // Funcao para atualizar a pagina e limpar as opcoes geradas

@@ -6,7 +6,7 @@
 
 body{
     text-align: center;
-    background-color: rgb(255, 235, 205);
+    background-color: rgb(255, 235, 205) !important;
 }
 
 ul, li{
